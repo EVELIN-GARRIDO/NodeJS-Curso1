@@ -1,0 +1,42 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/mysql">Conexión con MySQL</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Categorías</li>
+    </ol>
+</nav>
+<h1>Categorías</h1>
+{{>flash}}
+<p>
+    <a href="/mysql/categorias/add" class="btn btn-success">Crear</a>
+</p>
+<div class="responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <td>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each datos}}
+                <tr>
+                    <td>{{this.id}}</td>
+                    <td>{{this.nombre}}</td>
+                    <td>
+                        <a href="/mysql/categorias/edit/{{this.id }}">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        &nbsp;
+                        <a href="javascript:void(0);"
+                            onclick="confirmaAlert('Realmente desea eliminar este registro?', '/mysql/categorias/delete/{{this.id }}');">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+ 

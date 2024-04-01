@@ -1,0 +1,24 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Login</li>
+    </ol>
+</nav>
+<h1>Login</h1>
+{{>flash}}
+<form action="/acceso/login" method="POST">
+    <div class="row">
+        <div class="form-group izquierda">
+            <label for="correo">E-Mail</label>
+            <input type="text" name="correo" id="correo" placeholder="E-Mail:" class="form-control" />
+        </div>
+        <div class="form-group izquierda">
+        <label for="password">Contraseña</label>
+        <input type="password" name="password" id="password" placeholder="Contraseña:" class="form-control" />
+        </div>
+    </div>
+    <hr />
+    <input type="hidden" name="_csrf" id="_csrf" value="{{csrfToken}}" />
+    <input type="submit" value="Enviar" class="btn btn-primary" />
+</form>
+ 

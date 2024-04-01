@@ -1,0 +1,22 @@
+<h1>Cliente Rest</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Descripción</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each datos}}
+        <tr>
+            <td>{{this.id}}</td>
+            <td>{{this.nombre}}</td>
+            <td>{{this.precio}}</td>
+            <td>{{this.descripcion}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+ 

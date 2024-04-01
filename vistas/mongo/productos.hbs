@@ -1,0 +1,59 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/mongo">Conexión con Mongodb</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Productos</li>
+    </ol>
+</nav>
+<h1>Productos</h1>
+{{>flash}}
+<p>
+    <a href="/mongo/productos/add" class="btn btn-success">Crear</a>
+</p>
+<div class="responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Categoría</th>
+                <td>Nombre</th>
+                <th>Precio</th>
+                <th>Descripción</th>
+                <th>Fotos</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each datos}}
+                <tr>
+                    <td>{{this._id}}</td>
+                    <td>
+                        <a href="/mongo/productos/categorias/{{categoria_id._id}}">
+                            {{categoria_id.nombre}}
+                        </a>
+                    </td>
+                    <td>{{this.nombre}}</td>
+                    <td>${{formatearNumero this.precio}}</td>
+                    <td>{{acortarDescripcion this.descripcion}}.....</td>
+                    <td>
+                        <a href="/mongo/productos/fotos/{{this._id}}">
+                        <i class="fas fa-camera"></i>
+                        </a>
+
+                    </td>
+                    <td>
+                        <a href="/mongo/productos/edit/{{this._id }}">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        &nbsp;
+                        <a href="javascript:void(0);"
+                            onclick="confirmaAlert('Realmente desea eliminar este registro?', '/mongo/productos/delete/{{this._id }}');">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+ 

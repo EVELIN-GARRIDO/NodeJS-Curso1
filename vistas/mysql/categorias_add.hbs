@@ -1,0 +1,23 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/mysql">Conexión con MySQL</a></li>
+        <li class="breadcrumb-item"><a href="/mysql/categorias">Categorías</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Agregar</li>
+    </ol>
+</nav>
+<h1>Agregar</h1>
+{{>flash}}
+<form action="/mysql/categorias/add" method="POST">
+    <div class="row">
+        <div class="form-group izquierda">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre:" class="form-control" />
+        </div>
+
+    </div>
+    <hr />
+    <input type="hidden" name="_csrf" id="_csrf" value="{{csrfToken}}" />
+    <input type="submit" value="Enviar" class="btn btn-primary" />
+</form>
+ 

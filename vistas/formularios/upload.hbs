@@ -1,0 +1,13 @@
+<h1>Formulario upload</h1>
+{{>flash}}
+
+<form action="/formularios/upload?_csrf={{csrfToken}}" method="post" name="form" enctype="multipart/form-data">
+
+    <div class="form-group">
+        <label for="foto">Foto</label>
+        <input type="file" name="foto" id="foto" class="form-control" />
+    </div>
+    <hr /> 
+    <input type="submit" value="Enviar" class="btn btn-primary" />
+
+</form>

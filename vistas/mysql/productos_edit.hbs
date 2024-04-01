@@ -1,0 +1,39 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/mysql">Conexión con Mongodb</a></li>
+        <li class="breadcrumb-item"><a href="/mysql/productos">Productos</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Editar</li>
+    </ol>
+</nav>
+<h1>Editar</h1>
+{{>flash}}
+<form action="/mysql/productos/edit/{{producto.id}}" method="POST">
+    <div class="row">
+
+        <div class="form-group izquierda">
+            <label for="categoria_id">Categoría </label>
+            <select name="categoria_id" id="categoria_id" class="form-control">
+                {{#each categorias}}
+                <option value="{{this.id}}">{{this.nombre}} </option>
+                {{/each}}
+            </select> 
+        </div>
+        <div class="form-group izquierda">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre:" class="form-control" value="{{producto.nombre}}" />
+        </div>
+        <div class="form-group izquierda">
+            <label for="precio">Precio</label>
+            <input type="text" name="precio" id="precio" placeholder="Precio:" class="form-control" onkeypress="return soloNumeros(event)" value="{{producto.precio}}" />
+        </div>
+        <div class="form-group izquierda">
+            <label for="descripcion">Descripción</label>
+            <textarea name="descripcion" id="descripcion" cols="30" rows="10" class="form-control" placeholder="Descripción">{{producto.descripcion}}</textarea>
+        </div>
+    </div>
+    <hr />
+    <input type="hidden" name="_csrf" id="_csrf" value="{{csrfToken}}" />
+    <input type="submit" value="Enviar" class="btn btn-primary" />
+</form>
+ 

@@ -1,0 +1,49 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/mongo">Conexión con Mongodb</a></li>
+        <li class="breadcrumb-item"><a href="/mongo/productos">Productos</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Fotos del producto: <strong>{{producto.nombre}}</strong></li>
+    </ol>
+</nav>
+<h1>Fotos del producto: <strong>{{producto.nombre}}</strong></h1>
+{{>flash}}
+<form name="form" action="/mongo/productos/fotos/{{producto._id}}?_csrf={{csrfToken}}" method="POST"
+    enctype="multipart/form-data">
+    <div class="row">
+        <div class="form-group izquierda">
+            <label for="foto">Foto</label>
+            <input type="file" name="foto" id="foto" class="form-control" />
+        </div>
+
+    </div>
+    <hr /> 
+    <input type="submit" value="Enviar" class="btn btn-primary" />
+</form>
+<hr />
+<div class="row">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each fotos}}
+                <tr>
+                    <td>
+                        <img src="/uploads/producto/{{this.nombre}}" alt="MI proyecto" width="200" height="200" />
+                    </td>
+                    <td style="text-align: center;">
+                    <a href="javascript:void(0);"
+                        onclick="confirmaAlert('Realmente desea eliminar este registro?', '/mongo/productos/fotos/delete/{{producto_id}}/{{this._id }}');">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+

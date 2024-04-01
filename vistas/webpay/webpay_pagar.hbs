@@ -1,0 +1,12 @@
+<h1>Webpay de Transbank</h1>
+pagando.....
+<form action="{{webpay_peticion.url}}" name="form" method="POST">
+<input type="hidden" name="token_ws" value="{{webpay_peticion.token}}" />
+</form>
+
+
+<script type="text/javascript">
+    window.onload = function () {
+        document.form.submit();
+    };
+</script>

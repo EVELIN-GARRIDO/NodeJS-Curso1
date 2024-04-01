@@ -1,0 +1,39 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/mongo">Conexión con Mongodb</a></li>
+        <li class="breadcrumb-item"><a href="/mongo/productos">Productos</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Agregar</li>
+    </ol>
+</nav>
+<h1>Agregar</h1>
+{{>flash}}
+<form action="/mongo/productos/add" method="POST">
+    <div class="row">
+
+        <div class="form-group izquierda">
+            <label for="categoria_id">Categoría</label>
+            <select name="categoria_id" id="categoria_id" class="form-control">
+                {{#each categorias}}
+                <option value="{{this._id}}">{{this.nombre}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="form-group izquierda">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre:" class="form-control" />
+        </div>
+        <div class="form-group izquierda">
+            <label for="precio">Precio</label>
+            <input type="text" name="precio" id="precio" placeholder="Precio:" class="form-control" onkeypress="return soloNumeros(event)" />
+        </div>
+        <div class="form-group izquierda">
+            <label for="descripcion">Descripción</label>
+            <textarea name="descripcion" id="descripcion" cols="30" rows="10" class="form-control" placeholder="Descripción"></textarea>
+        </div>
+    </div>
+    <hr />
+    <input type="hidden" name="_csrf" id="_csrf" value="{{csrfToken}}" />
+    <input type="submit" value="Enviar" class="btn btn-primary" />
+</form>
+ 

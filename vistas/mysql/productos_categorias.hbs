@@ -1,0 +1,60 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item"><a href="/mysql">Conexión con Mongodb</a></li>
+        <li class="breadcrumb-item"><a href="/mysql/productos">Productos</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Productos de la categoría : <strong>{{cat.nombre}}</strong></li>
+    </ol>
+</nav>
+<h1>Productos de la categoría : <strong>{{cat.nombre}}</strong></h1>
+{{>flash}}
+<p>
+    <a href="/mysql/productos/add" class="btn btn-success">Crear</a>
+</p>
+<div class="responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Categoría</th>
+                <td>Nombre</th>
+                <th>Precio</th>
+                <th>Descripción</th>
+                <th>Fotos</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each datos}}
+                <tr>
+                    <td>{{this.id}}</td>
+                    <td>
+                        <a href="/mysql/productos/categorias/{{'category.id'}}">
+                            {{'category.nombre'}}
+                        </a>
+                    </td>
+                    <td>{{this.nombre}}</td>
+                    <td>${{formatearNumero this.precio}}</td>
+                    <td>{{acortarDescripcion this.descripcion}}.....</td>
+                    <td>
+                            <a href="/mysql/productos/fotos/{{this.id}}">
+                                <i class="fas fa-camera"></i>
+                            </a>
+
+                    </td>
+                    <td>
+                        <a href="/mysql/productos/edit/{{this.id }}">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        &nbsp;
+                        <a href="javascript:void(0);"
+                            onclick="confirmaAlert('Realmente desea eliminar este registro?', '/mysql/productos/delete/{{this.id }}');">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+ 

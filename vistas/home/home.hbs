@@ -1,0 +1,24 @@
+{{>ejemplo_partial}}
+
+<h1>Hola mundo desde handlebars</h1>
+<hr />
+<h3> Nombre: {{nombre}} </h3>
+<hr>
+<h3>Variable local : {{ejemplo_local}}</h3>
+<hr>
+<h3>Condicionales</h3>
+{{#if drgdgd}}
+    {{ejemplo_local}}
+{{/if}}
+<hr>
+<h3>Arreglos y ciclos</h3>
+<ul>
+{{#each paises}}
+    <li> {{@index}} - {{this.nombre}} | {{this.nic}} </li>
+{{/each}}
+</ul>
+<hr>
+<h3>Helper personalizado</h3>
+{{#calculadora 12 13}}
+
+{{/calculadora}}
